@@ -1,4 +1,4 @@
-package com.nes.ipot
+package com.nes.nestaurant
 
 import io.flutter.embedding.android.FlutterActivity
 
