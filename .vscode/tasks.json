@@ -2,6 +2,19 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Flutter Clean Full Reset iOS",
+      "type": "shell",
+      "command": "rm -f pubspec.lock && flutter clean && flutter pub get && cd ios && rm -f Podfile.lock && pod install --repo-update && cd ..",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Repeat Pod Install",
+      "type": "shell",
+      "command": "cd ios && rm -f Podfile.lock && pod install --repo-update && cd ..",
+      "problemMatcher": []
+    },
+    {
       "label": "Final Flutter Clean",
       "type": "shell",
       "command": "rm -f pubspec.lock && flutter clean && flutter pub get",
@@ -11,6 +24,12 @@
       "label": "Build Runner",
       "type": "shell",
       "command": "dart run build_runner build --delete-conflicting-outputs",
+      "problemMatcher": []
+    },
+    {
+      "label": "Generate Routes",
+      "type": "shell",
+      "command": "dart lib/tools/generate_routes.dart",
       "problemMatcher": []
     }
   ]
