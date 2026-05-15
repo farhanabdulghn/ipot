@@ -4,25 +4,46 @@
 ![Platform](https://img.shields.io/badge/Platform-Android-green)
 ![License](https://img.shields.io/badge/License-MIT-orange)
 
-A modern Flutter-based ordering application designed to simplify table ordering and customer interactions through QR code scanning.
+A modern Flutter-based ordering application designed to simplify restaurant table ordering through QR code scanning, real-time order updates, and a seamless digital menu experience.
 
 ## Features
 
 - QR table scanning
-- Digital ordering system
+- Digital restaurant menu
+- Cart and order management
+- Real-time order updates with Pusher
 - Multi-language support (l10n)
 - Responsive UI
 - Riverpod state management
-- API integration
-- Real-time order handling
+- REST API integration
+- Railway backend deployment
 
 ## Tech Stack
+
+### Core
 
 - Flutter
 - Dart
 - Riverpod
 - REST API
 - WebSocket
+- Railway
+
+### Main Packages
+
+| Package | Purpose |
+|---|---|
+| `flutter_riverpod` | State management |
+| `riverpod_annotation` | Riverpod code generation |
+| `freezed` / `freezed_annotation` | Immutable model generation |
+| `json_serializable` / `json_annotation` | JSON serialization |
+| `dio` | HTTP client |
+| `mobile_scanner` | QR code scanning |
+| `phosphor_flutter` | Icon library |
+| `cached_network_image` | Network image caching |
+| `pusher_channels_flutter` | Real-time communication |
+| `google_fonts` | Custom typography |
+| `intl` | Internationalization |
 
 ## Getting Started
 
@@ -53,6 +74,15 @@ Run the application:
 ```bash
 flutter run
 ```
+
+## Application Flow
+
+1. Scan the QR code on the table.
+2. Browse the available restaurant menu.
+3. Add menu items to the cart.
+4. Review selected items inside the cart screen.
+5. Place and monitor orders in real-time.
+6. Receive live updates powered by Pusher.
 
 ## API Collection
 
