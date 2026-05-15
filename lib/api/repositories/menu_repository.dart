@@ -4,7 +4,7 @@ import 'package:ipot/models/menu/menu_model.dart';
 class MenuRepository {
   final _apiServer = ApiServer.getInstance();
 
-  Future<MenuModel?> getMenuByTableId(String? tableId) async {
+  Future<MenuModel?> getMenuByTableId(String tableId) async {
     final queryParams = <String, dynamic>{'table_id': tableId};
 
     final response = await _apiServer.callService(
