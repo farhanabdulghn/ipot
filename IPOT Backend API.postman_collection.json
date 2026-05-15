@@ -1,0 +1,804 @@
+{
+  "info": {
+    "_postman_id": "5c654d9c-39e3-4b6f-88e1-50c1dc910b26",
+    "name": "IPOT Backend API",
+    "description": "QR Ordering App — semua endpoint backend Laravel",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23952896"
+  },
+  "item": [
+    {
+      "name": "Menu",
+      "item": [
+        {
+          "name": "Get Menu by Table ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/menu?table_id=T001",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "menu"
+              ],
+              "query": [
+                {
+                  "key": "table_id",
+                  "value": "T001"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/menu?table_id=T001",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "menu"
+                  ],
+                  "query": [
+                    {
+                      "key": "table_id",
+                      "value": "T001"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "127.0.0.1:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.4.20"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 09 May 2026 12:42:24 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"restaurant\": {\n        \"id\": \"R001\",\n        \"name\": \"Sushi Zen\",\n        \"tableId\": \"T001\"\n    },\n    \"categories\": [\n        {\n            \"id\": 1,\n            \"name\": \"Appetizers\",\n            \"sortOrder\": 1\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Main Course\",\n            \"sortOrder\": 2\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Drinks\",\n            \"sortOrder\": 3\n        }\n    ],\n    \"items\": [\n        {\n            \"id\": 1,\n            \"name\": \"Edamame\",\n            \"description\": \"Steamed soybeans with sea salt\",\n            \"price\": 5.99,\n            \"categoryId\": 1,\n            \"imageUrl\": null,\n            \"customizationGroups\": [\n                {\n                    \"id\": 1,\n                    \"name\": \"Seasoning\",\n                    \"required\": false,\n                    \"maxSelections\": 2,\n                    \"options\": [\n                        {\n                            \"id\": 1,\n                            \"name\": \"Sea Salt\",\n                            \"priceModifier\": 0\n                        },\n                        {\n                            \"id\": 2,\n                            \"name\": \"Truffle Salt\",\n                            \"priceModifier\": 1.5\n                        },\n                        {\n                            \"id\": 3,\n                            \"name\": \"Chili Flakes\",\n                            \"priceModifier\": 0.5\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Salmon Sashimi\",\n            \"description\": \"Fresh Norwegian salmon, 8 pieces\",\n            \"price\": 16.99,\n            \"categoryId\": 2,\n            \"imageUrl\": null,\n            \"customizationGroups\": [\n                {\n                    \"id\": 2,\n                    \"name\": \"Size\",\n                    \"required\": true,\n                    \"maxSelections\": 1,\n                    \"options\": [\n                        {\n                            \"id\": 4,\n                            \"name\": \"Regular (8pc)\",\n                            \"priceModifier\": 0\n                        },\n                        {\n                            \"id\": 5,\n                            \"name\": \"Large (12pc)\",\n                            \"priceModifier\": 8\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Green Tea\",\n            \"description\": \"Hot Japanese green tea\",\n            \"price\": 3.5,\n            \"categoryId\": 3,\n            \"imageUrl\": null,\n            \"customizationGroups\": []\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Chicken Ramen\",\n            \"description\": \"Rich chicken broth with chashu, egg, and noodles\",\n            \"price\": 14.99,\n            \"categoryId\": 2,\n            \"imageUrl\": null,\n            \"customizationGroups\": [\n                {\n                    \"id\": 3,\n                    \"name\": \"Spice Level\",\n                    \"required\": true,\n                    \"maxSelections\": 1,\n                    \"options\": [\n                        {\n                            \"id\": 6,\n                            \"name\": \"Mild\",\n                            \"priceModifier\": 0\n                        },\n                        {\n                            \"id\": 7,\n                            \"name\": \"Medium\",\n                            \"priceModifier\": 0\n                        },\n                        {\n                            \"id\": 8,\n                            \"name\": \"Spicy\",\n                            \"priceModifier\": 0\n                        },\n                        {\n                            \"id\": 9,\n                            \"name\": \"Extra Spicy\",\n                            \"priceModifier\": 1\n                        }\n                    ]\n                },\n                {\n                    \"id\": 4,\n                    \"name\": \"Add-ons\",\n                    \"required\": false,\n                    \"maxSelections\": 3,\n                    \"options\": [\n                        {\n                            \"id\": 10,\n                            \"name\": \"Extra Egg\",\n                            \"priceModifier\": 2\n                        },\n                        {\n                            \"id\": 11,\n                            \"name\": \"Extra Chashu\",\n                            \"priceModifier\": 4\n                        },\n                        {\n                            \"id\": 12,\n                            \"name\": \"Corn\",\n                            \"priceModifier\": 1\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Item",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"image_url\": \"https://www.healthybyfork.com/wp-content/uploads/2025/09/steamed-edamame-sea-salt-featured.webp\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/menu-items/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "menu-items",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/categories",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/categories",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "categories"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": ":status",
+                  "value": 200
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 10 May 2026 12:14:47 GMT"
+                },
+                {
+                  "key": "host",
+                  "value": "web-production-bd69d.up.railway.app"
+                },
+                {
+                  "key": "server",
+                  "value": "railway-edge"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.3.31"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "railway/asia-southeast1-eqsg3a"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "1I5ysJT3ThiblHnnmrpb1w"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Appetizers\",\n            \"sortOrder\": 1\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Main Course\",\n            \"sortOrder\": 2\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Drinks\",\n            \"sortOrder\": 3\n        }\n    ]\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tables",
+      "item": [
+        {
+          "name": "Get Table Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/tables/T001/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tables",
+                "T001",
+                "status"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/tables/T001/status",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "tables",
+                    "T001",
+                    "status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": ":status",
+                  "value": 200
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 10 May 2026 13:31:23 GMT"
+                },
+                {
+                  "key": "host",
+                  "value": "web-production-bd69d.up.railway.app"
+                },
+                {
+                  "key": "server",
+                  "value": "railway-edge"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.3.31"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "railway/asia-southeast1-eqsg3a"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "gCfUkvgaTrCSRQR2DcO5xA"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"tableId\": \"T001\",\n    \"status\": \"available\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Submit Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"table_id\": \"T001\",\n  \"items\": [\n    {\n      \"menu_item_id\": 1,\n      \"quantity\": 2,\n      \"customizations\": [\n        { \"option_id\": 3, \"quantity\": 1 }\n      ]\n    },\n    {\n      \"menu_item_id\": 4,\n      \"quantity\": 1,\n      \"customizations\": [\n        { \"option_id\": 7, \"quantity\": 1 },\n        { \"option_id\": 10, \"quantity\": 1 }\n      ]\n    }\n  ],\n  \"customer_note\": \"No MSG please\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/orders",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"table_id\": \"T001\",\n  \"items\": [\n    {\n      \"menu_item_id\": 1,\n      \"quantity\": 2,\n      \"customizations\": [\n        { \"option_id\": 3, \"quantity\": 1 }\n      ]\n    },\n    {\n      \"menu_item_id\": 4,\n      \"quantity\": 1,\n      \"customizations\": [\n        { \"option_id\": 7, \"quantity\": 1 },\n        { \"option_id\": 10, \"quantity\": 1 }\n      ]\n    }\n  ],\n  \"customer_note\": \"No MSG please\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/orders",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": ":status",
+                  "value": 201
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "date",
+                  "value": "Thu, 14 May 2026 07:18:43 GMT"
+                },
+                {
+                  "key": "host",
+                  "value": "web-production-bd69d.up.railway.app"
+                },
+                {
+                  "key": "server",
+                  "value": "railway-edge"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.3.31"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "railway/asia-southeast1-eqsg3a"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "pq2Q--IIQI2jQScBAXC71g"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Order placed successfully\",\n    \"orderId\": 1,\n    \"status\": \"pending\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Order Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/orders/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Order Status",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/orders/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "orders",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": ":status",
+                  "value": 200
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "date",
+                  "value": "Thu, 14 May 2026 07:18:47 GMT"
+                },
+                {
+                  "key": "host",
+                  "value": "web-production-bd69d.up.railway.app"
+                },
+                {
+                  "key": "server",
+                  "value": "railway-edge"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.3.31"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "railway/asia-southeast1-eqsg3a"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "1SLHb07dTJeCZbS5AXC71g"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"data\": {\n        \"orderId\": 1,\n        \"tableId\": \"T001\",\n        \"status\": \"pending\",\n        \"customerNote\": \"No MSG please\",\n        \"estimatedTime\": null,\n        \"items\": [\n            {\n                \"menuItemId\": 1,\n                \"name\": \"Edamame\",\n                \"quantity\": 2,\n                \"unitPrice\": 5.99,\n                \"customizations\": [\n                    {\n                        \"optionId\": 3,\n                        \"name\": \"Chili Flakes\",\n                        \"priceModifier\": 0.5,\n                        \"quantity\": 1\n                    }\n                ]\n            },\n            {\n                \"menuItemId\": 4,\n                \"name\": \"Chicken Ramen\",\n                \"quantity\": 1,\n                \"unitPrice\": 14.99,\n                \"customizations\": [\n                    {\n                        \"optionId\": 7,\n                        \"name\": \"Medium\",\n                        \"priceModifier\": 0,\n                        \"quantity\": 1\n                    },\n                    {\n                        \"optionId\": 10,\n                        \"name\": \"Extra Egg\",\n                        \"priceModifier\": 2,\n                        \"quantity\": 1\n                    }\n                ]\n            }\n        ],\n        \"createdAt\": \"2026-05-14T07:18:42.000000Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get List Order Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/orders",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/orders",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": ":status",
+                  "value": 200
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "date",
+                  "value": "Thu, 14 May 2026 07:18:51 GMT"
+                },
+                {
+                  "key": "host",
+                  "value": "web-production-bd69d.up.railway.app"
+                },
+                {
+                  "key": "server",
+                  "value": "railway-edge"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.3.31"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "railway/asia-southeast1-eqsg3a"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "bDxH8rYZSmevRqptAXC71g"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"orderId\": 1,\n            \"tableId\": \"T001\",\n            \"status\": \"pending\",\n            \"customerNote\": \"No MSG please\",\n            \"estimatedTime\": null,\n            \"items\": [\n                {\n                    \"menuItemId\": 1,\n                    \"name\": \"Edamame\",\n                    \"quantity\": 2,\n                    \"unitPrice\": 5.99,\n                    \"customizations\": [\n                        {\n                            \"optionId\": 3,\n                            \"name\": \"Chili Flakes\",\n                            \"priceModifier\": 0.5,\n                            \"quantity\": 1\n                        }\n                    ]\n                },\n                {\n                    \"menuItemId\": 4,\n                    \"name\": \"Chicken Ramen\",\n                    \"quantity\": 1,\n                    \"unitPrice\": 14.99,\n                    \"customizations\": [\n                        {\n                            \"optionId\": 7,\n                            \"name\": \"Medium\",\n                            \"priceModifier\": 0,\n                            \"quantity\": 1\n                        },\n                        {\n                            \"optionId\": 10,\n                            \"name\": \"Extra Egg\",\n                            \"priceModifier\": 2,\n                            \"quantity\": 1\n                        }\n                    ]\n                }\n            ],\n            \"createdAt\": \"2026-05-14T07:18:42.000000Z\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Order Status — confirmed",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"confirmed\",\n  \"estimated_time\": 15\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/orders/1/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders",
+                "1",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status — preparing",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"preparing\",\n  \"estimated_time\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/orders/1/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders",
+                "1",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status — ready",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"ready\",\n  \"estimated_time\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/orders/1/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders",
+                "1",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status — served",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"served\",\n  \"estimated_time\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/orders/1/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders",
+                "1",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000/api/v1",
+      "type": "string"
+    }
+  ]
+}
