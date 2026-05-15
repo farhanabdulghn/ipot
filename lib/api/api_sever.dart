@@ -85,17 +85,7 @@ class ApiServer<T> {
           break;
       }
 
-      final responseData = response.data as Map<String, dynamic>;
-
-      if (responseData.containsKey('status') &&
-          responseData['status'] != 'success') {
-        Functions.errorPrint(
-          '$className#$methodName err : ${responseData['message']}',
-        );
-        return response;
-      } else {
-        return response;
-      }
+      return response;
     } on DioException catch (e) {
       final error =
           '$className#$methodName err : ${e.response?.data['message']}';

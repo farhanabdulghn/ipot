@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ipot/config/env.dart';
 
 class BaseApi {
   final String baseUrl;
@@ -9,9 +10,9 @@ class BaseApi {
     return Dio(
         BaseOptions(
           baseUrl: baseUrl,
-          connectTimeout: const Duration(seconds: 30),
-          receiveTimeout: const Duration(seconds: 45),
-          sendTimeout: const Duration(seconds: 30),
+          connectTimeout: Duration(seconds: 30),
+          receiveTimeout: Duration(seconds: 45),
+          sendTimeout: Duration(seconds: 30),
           headers: {
             'Content-Type': 'application/json;charset=UTF-8',
             'Charset': 'utf-8',
@@ -34,7 +35,7 @@ class BaseApi {
 }
 
 class ApiClient extends BaseApi {
-  ApiClient() : super('https://web-production-bd69d.up.railway.app/api/v1');
+  ApiClient() : super(Environment.config.baseApi);
   static ApiClient? _instance;
   static ApiClient get instance => _instance == null ? ApiClient() : _instance!;
 }
