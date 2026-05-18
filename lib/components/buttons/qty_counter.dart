@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ipot/components/buttons/app_icon_button.dart';
+import 'package:ipot/utils/enums.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class QtyCounter extends StatelessWidget {
@@ -23,10 +25,9 @@ class QtyCounter extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        spacing: 4,
+        spacing: 8,
         children: [
-          _CounterButton(
-            icon: PhosphorIconsBold.minus,
+          AppIconButton(
             onTap: () {
               if (value <= 1) {
                 onMinReached?.call();
@@ -34,6 +35,8 @@ class QtyCounter extends StatelessWidget {
               }
               onChanged(value - 1);
             },
+            icon: PhosphorIconsBold.minus,
+            size: SizeVariant.small,
           ),
           AnimatedSwitcher(
             duration: Duration(milliseconds: 180),
@@ -51,45 +54,13 @@ class QtyCounter extends StatelessWidget {
               ),
             ),
           ),
-          _CounterButton(
-            icon: PhosphorIconsBold.plus,
+          AppIconButton(
             onTap: () => onChanged(value + 1),
-            filled: true,
+            icon: PhosphorIconsBold.plus,
+            size: SizeVariant.small,
+            type: TypeVariant.black,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _CounterButton extends StatelessWidget {
-  final IconData icon;
-  final VoidCallback onTap;
-  final bool filled;
-
-  const _CounterButton({
-    required this.icon,
-    required this.onTap,
-    this.filled = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 150),
-        width: 30,
-        height: 30,
-        decoration: BoxDecoration(
-          color: filled ? Colors.black87 : Colors.white,
-          borderRadius: BorderRadius.circular(100),
-        ),
-        child: Icon(
-          icon,
-          size: 13,
-          color: filled ? Colors.white : Colors.black87,
-        ),
       ),
     );
   }

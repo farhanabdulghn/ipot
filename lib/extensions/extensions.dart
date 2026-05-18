@@ -2,7 +2,6 @@ library;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ipot/l10n/app_localizations.dart';
 import 'package:ipot/models/component_props/component_props_model.dart';
 import 'package:ipot/utils/enums.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
