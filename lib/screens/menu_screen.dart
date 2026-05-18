@@ -9,6 +9,7 @@ import 'package:ipot/sections/feedback_section.dart';
 import 'package:ipot/sections/modal_detail_menu_section.dart';
 import 'package:ipot/state/actions/menu/menu_state.dart';
 import 'package:ipot/state/stores/page_handle/page_handle_notifier.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class MenuScreen extends ConsumerWidget {
   final String tableId;
@@ -46,7 +47,7 @@ class MenuScreen extends ConsumerWidget {
           final items = data?.items;
 
           if (items.hasNoValue) {
-            return FeedbackSection.empty(icon: Icons.restaurant_menu_rounded);
+            return FeedbackSection.empty(icon: PhosphorIconsRegular.forkKnife);
           }
 
           return RefreshIndicator.adaptive(
@@ -111,7 +112,7 @@ class MenuScreen extends ConsumerWidget {
                         ),
                       ),
                       trailing: Icon(
-                        Icons.chevron_right_rounded,
+                        PhosphorIconsRegular.caretRight,
                         color: Colors.grey.shade400,
                         size: 20,
                       ),

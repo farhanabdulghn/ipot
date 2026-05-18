@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ipot/l10n/app_localizations.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 part 'component_props_model.freezed.dart';
 
 @freezed
 abstract class ComponentPropsModel with _$ComponentPropsModel {
   const factory ComponentPropsModel({
-    String Function(AppLocalizations)? label,
-    String? title,
-    String? subtitle,
-    IconData? regularIcon,
-    IconData? fillIcon,
-    IconData? duotone,
+    required String Function(AppLocalizations) title,
+    String Function(AppLocalizations)? subtitle,
+    required IconData Function(PhosphorIconsStyle) icon,
     Color? color,
   }) = _ComponentPropsModel;
 }

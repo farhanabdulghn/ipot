@@ -8,21 +8,9 @@ import 'package:ipot/state/stores/page_handle/page_handle_notifier.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 final _items = [
-  ComponentPropsModel(
-    label: (l) => l.navMenu,
-    regularIcon: PhosphorIconsRegular.forkKnife,
-    fillIcon: PhosphorIconsFill.forkKnife,
-  ),
-  ComponentPropsModel(
-    label: (l) => l.navOrder,
-    regularIcon: PhosphorIconsRegular.receipt,
-    fillIcon: PhosphorIconsFill.receipt,
-  ),
-  ComponentPropsModel(
-    label: (l) => l.navCart,
-    regularIcon: PhosphorIconsRegular.basket,
-    fillIcon: PhosphorIconsFill.basket,
-  ),
+  ComponentPropsModel(title: (l) => l.navMenu, icon: PhosphorIcons.forkKnife),
+  ComponentPropsModel(title: (l) => l.navOrder, icon: PhosphorIcons.receipt),
+  ComponentPropsModel(title: (l) => l.navCart, icon: PhosphorIcons.basket),
 ];
 
 class MenuNavigationSection extends ConsumerStatefulWidget {
@@ -70,7 +58,11 @@ class _MenuNavigationSectionState extends ConsumerState<MenuNavigationSection> {
             Widget iconWidget = Padding(
               padding: EdgeInsets.all(4),
               child: PhosphorIcon(
-                selected ? item.fillIcon! : item.regularIcon!,
+                item.icon(
+                  selected
+                      ? PhosphorIconsStyle.fill
+                      : PhosphorIconsStyle.regular,
+                ),
                 color: color,
                 size: 24,
               ),
@@ -114,7 +106,7 @@ class _MenuNavigationSectionState extends ConsumerState<MenuNavigationSection> {
                         child: iconWidget,
                       ),
                       SizedBox(height: 2),
-                      Text(item.label!(l10n)),
+                      Text(item.title(l10n)),
                     ],
                   ),
                 ),

@@ -51,7 +51,7 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
     required int currentStep,
     required AnimationController controller,
   }) {
-    final props = status.toProps(context);
+    final props = status.toProps;
 
     final isCompleted = currentStep > status.index;
     final isCurrent = currentStep == status.index;
@@ -64,7 +64,7 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
         : Colors.grey;
 
     Widget stepIcon = PhosphorIcon(
-      props.duotone!,
+      props.icon(PhosphorIconsStyle.duotone),
       size: 34,
       color: activeColor,
     );
@@ -114,10 +114,10 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
                       begin: isCurrent ? Colors.grey : activeColor,
                       end: activeColor,
                     ),
-                    duration: const Duration(milliseconds: 600),
+                    duration: Duration(milliseconds: 600),
                     builder: (context, color, _) {
                       return Text(
-                        status.name.toUpperCase(),
+                        props.title(l10n),
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 16,
@@ -127,7 +127,7 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
                     },
                   ),
                   Text(
-                    props.subtitle ?? '',
+                    props.subtitle!(l10n),
                     style: TextStyle(
                       fontSize: 12,
                       color: isPending
