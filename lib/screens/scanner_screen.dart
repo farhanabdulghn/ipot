@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ipot/components/buttons/app_icon_button.dart';
 import 'package:ipot/components/loadings/loading.dart';
 import 'package:ipot/extensions/extensions.dart';
 import 'package:ipot/l10n/app_localizations.dart';
 import 'package:ipot/screens/main_frame_screen.dart';
 import 'package:ipot/state/actions/table/table_state.dart';
 import 'package:ipot/state/stores/cart/cart_notifier.dart';
-import 'package:ipot/state/stores/locale/locale_notifier.dart';
 import 'package:ipot/utils/app_route_annotation.dart';
+import 'package:ipot/utils/enums.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -58,10 +59,71 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen>
     } catch (e) {
       if (!mounted) return;
       Loading(context).stop();
-      context.showSnackBar('Menu not found');
+      context.showSnackBar(AppLocalizations.of(context)!.menuNotFound);
       setState(() => _scanned = false);
       _controller.start();
     }
+  }
+
+  List<Widget> _buildCorners(double size, double radius) {
+    const len = 28.0;
+    const thick = 3.0;
+    const color = Colors.white;
+
+    Widget corner({
+      required AlignmentGeometry alignment,
+      required BorderRadius borderRadius,
+    }) => Align(
+      alignment: alignment,
+      child: Container(
+        width: len,
+        height: len,
+        decoration: BoxDecoration(
+          border: Border(
+            top:
+                (borderRadius.topLeft != Radius.zero ||
+                    borderRadius.topRight != Radius.zero)
+                ? BorderSide(color: color, width: thick)
+                : BorderSide.none,
+            left:
+                (borderRadius.topLeft != Radius.zero ||
+                    borderRadius.bottomLeft != Radius.zero)
+                ? BorderSide(color: color, width: thick)
+                : BorderSide.none,
+            bottom:
+                (borderRadius.bottomLeft != Radius.zero ||
+                    borderRadius.bottomRight != Radius.zero)
+                ? BorderSide(color: color, width: thick)
+                : BorderSide.none,
+            right:
+                (borderRadius.topRight != Radius.zero ||
+                    borderRadius.bottomRight != Radius.zero)
+                ? BorderSide(color: color, width: thick)
+                : BorderSide.none,
+          ),
+          borderRadius: borderRadius,
+        ),
+      ),
+    );
+
+    return [
+      corner(
+        alignment: Alignment.topLeft,
+        borderRadius: const BorderRadius.only(topLeft: Radius.circular(10)),
+      ),
+      corner(
+        alignment: Alignment.topRight,
+        borderRadius: const BorderRadius.only(topRight: Radius.circular(10)),
+      ),
+      corner(
+        alignment: Alignment.bottomLeft,
+        borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10)),
+      ),
+      corner(
+        alignment: Alignment.bottomRight,
+        borderRadius: const BorderRadius.only(bottomRight: Radius.circular(10)),
+      ),
+    ];
   }
 
   @override
@@ -86,18 +148,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen>
 
   @override
   Widget build(BuildContext context) {
-    final locale = ref.watch(localeProvider);
-
-    return Localizations.override(
-      context: context,
-      locale: locale,
-      child: Builder(builder: (ctx) => _buildBody(ctx)),
-    );
-  }
-
-  Widget _buildBody(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-
     const frameSize = 260.0;
     const frameRadius = 20.0;
 
@@ -116,7 +167,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen>
               fit: StackFit.expand,
               children: [
                 Container(
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Colors.black,
                     backgroundBlendMode: BlendMode.dstOut,
                   ),
@@ -168,20 +219,23 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen>
           ),
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _CircleButton(
-                    icon: PhosphorIconsBold.arrowLeft,
+                  AppIconButton(
                     onTap: () => Navigator.pop(context),
+                    icon: PhosphorIconsBold.arrowLeft,
+                    type: TypeVariant.transparent,
                   ),
-                  _CircleButton(
+                  AppIconButton(
+                    onTap: _toggleTorch,
                     icon: _torchOn
                         ? PhosphorIconsFill.flashlight
                         : PhosphorIconsRegular.flashlight,
-                    onTap: _toggleTorch,
-                    isActive: _torchOn,
+                    type: _torchOn
+                        ? TypeVariant.white
+                        : TypeVariant.transparent,
                   ),
                 ],
               ),
@@ -193,20 +247,20 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen>
             right: 0,
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(32, 0, 32, 40),
+                padding: EdgeInsets.fromLTRB(32, 0, 32, 40),
                 child: Column(
+                  spacing: 8,
                   children: [
                     Text(
                       l10n.scanTitle,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
                         letterSpacing: -0.3,
                       ),
                     ),
-                    const SizedBox(height: 8),
                     Text(
                       l10n.scanSubtitle,
                       textAlign: TextAlign.center,
@@ -222,93 +276,6 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen>
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  List<Widget> _buildCorners(double size, double radius) {
-    const len = 28.0;
-    const thick = 3.0;
-    const color = Colors.white;
-
-    Widget corner({
-      required AlignmentGeometry alignment,
-      required BorderRadius borderRadius,
-    }) => Align(
-      alignment: alignment,
-      child: Container(
-        width: len,
-        height: len,
-        decoration: BoxDecoration(
-          border: Border(
-            top: borderRadius.topLeft != Radius.zero
-                ? const BorderSide(color: color, width: thick)
-                : BorderSide.none,
-            left: borderRadius.topLeft != Radius.zero
-                ? const BorderSide(color: color, width: thick)
-                : BorderSide.none,
-            bottom: borderRadius.bottomLeft != Radius.zero
-                ? const BorderSide(color: color, width: thick)
-                : BorderSide.none,
-            right: borderRadius.topRight != Radius.zero
-                ? const BorderSide(color: color, width: thick)
-                : BorderSide.none,
-          ),
-          borderRadius: borderRadius,
-        ),
-      ),
-    );
-
-    return [
-      corner(
-        alignment: Alignment.topLeft,
-        borderRadius: const BorderRadius.only(topLeft: Radius.circular(10)),
-      ),
-      corner(
-        alignment: Alignment.topRight,
-        borderRadius: const BorderRadius.only(topRight: Radius.circular(10)),
-      ),
-      corner(
-        alignment: Alignment.bottomLeft,
-        borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10)),
-      ),
-      corner(
-        alignment: Alignment.bottomRight,
-        borderRadius: const BorderRadius.only(bottomRight: Radius.circular(10)),
-      ),
-    ];
-  }
-}
-
-class _CircleButton extends StatelessWidget {
-  final IconData icon;
-  final VoidCallback onTap;
-  final bool isActive;
-
-  const _CircleButton({
-    required this.icon,
-    required this.onTap,
-    this.isActive = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        width: 42,
-        height: 42,
-        decoration: BoxDecoration(
-          color: isActive ? Colors.white : Colors.white.withValues(alpha: 0.15),
-          borderRadius: BorderRadius.circular(100),
-          border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
-        ),
-        child: Icon(
-          icon,
-          size: 18,
-          color: isActive ? Colors.black87 : Colors.white,
-        ),
       ),
     );
   }
