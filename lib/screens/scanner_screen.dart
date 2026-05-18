@@ -28,26 +28,6 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen>
   late final AnimationController _lineController;
   late final Animation<double> _lineAnim;
 
-  @override
-  void initState() {
-    super.initState();
-    _lineController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    )..repeat(reverse: true);
-
-    _lineAnim = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _lineController, curve: Curves.easeInOut),
-    );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    _lineController.dispose();
-    super.dispose();
-  }
-
   void _toggleTorch() {
     setState(() => _torchOn = !_torchOn);
     _controller.toggleTorch();
@@ -82,6 +62,26 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen>
       setState(() => _scanned = false);
       _controller.start();
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _lineController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..repeat(reverse: true);
+
+    _lineAnim = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(parent: _lineController, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _lineController.dispose();
+    super.dispose();
   }
 
   @override

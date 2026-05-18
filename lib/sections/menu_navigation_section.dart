@@ -2,21 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ipot/components/cards/notif_counting.dart';
 import 'package:ipot/l10n/app_localizations.dart';
+import 'package:ipot/models/component_props/component_props_model.dart';
 import 'package:ipot/state/stores/cart/cart_notifier.dart';
 import 'package:ipot/state/stores/page_handle/page_handle_notifier.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class _NavItem {
-  final String Function(AppLocalizations) label;
-  final IconData regularIcon;
-  final IconData fillIcon;
-
-  _NavItem({
-    required this.label,
-    required this.regularIcon,
-    required this.fillIcon,
-  });
-}
+final _items = [
+  ComponentPropsModel(
+    label: (l) => l.navMenu,
+    regularIcon: PhosphorIconsRegular.forkKnife,
+    fillIcon: PhosphorIconsFill.forkKnife,
+  ),
+  ComponentPropsModel(
+    label: (l) => l.navOrder,
+    regularIcon: PhosphorIconsRegular.receipt,
+    fillIcon: PhosphorIconsFill.receipt,
+  ),
+  ComponentPropsModel(
+    label: (l) => l.navCart,
+    regularIcon: PhosphorIconsRegular.basket,
+    fillIcon: PhosphorIconsFill.basket,
+  ),
+];
 
 class MenuNavigationSection extends ConsumerStatefulWidget {
   const MenuNavigationSection({super.key});
@@ -28,24 +35,6 @@ class MenuNavigationSection extends ConsumerStatefulWidget {
 
 class _MenuNavigationSectionState extends ConsumerState<MenuNavigationSection> {
   final _key = GlobalKey();
-
-  final _items = <_NavItem>[
-    _NavItem(
-      label: (l) => l.navMenu,
-      regularIcon: PhosphorIconsRegular.forkKnife,
-      fillIcon: PhosphorIconsFill.forkKnife,
-    ),
-    _NavItem(
-      label: (l) => l.navOrder,
-      regularIcon: PhosphorIconsRegular.receipt,
-      fillIcon: PhosphorIconsFill.receipt,
-    ),
-    _NavItem(
-      label: (l) => l.navCart,
-      regularIcon: PhosphorIconsRegular.basket,
-      fillIcon: PhosphorIconsFill.basket,
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +70,7 @@ class _MenuNavigationSectionState extends ConsumerState<MenuNavigationSection> {
             Widget iconWidget = Padding(
               padding: EdgeInsets.all(4),
               child: PhosphorIcon(
-                selected ? item.fillIcon : item.regularIcon,
+                selected ? item.fillIcon! : item.regularIcon!,
                 color: color,
                 size: 24,
               ),
@@ -125,7 +114,7 @@ class _MenuNavigationSectionState extends ConsumerState<MenuNavigationSection> {
                         child: iconWidget,
                       ),
                       SizedBox(height: 2),
-                      Text(item.label(l10n)),
+                      Text(item.label!(l10n)),
                     ],
                   ),
                 ),
