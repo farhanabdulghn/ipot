@@ -2,6 +2,7 @@
 
 ![Flutter](https://img.shields.io/badge/Flutter-3.41.9-blue?logo=flutter)
 ![Platform](https://img.shields.io/badge/Platform-Android-green)
+![Platform](https://img.shields.io/badge/Platform-IOS-blue)
 ![License](https://img.shields.io/badge/License-MIT-orange)
 
 A modern Flutter-based ordering application designed to simplify restaurant table ordering through QR code scanning, real-time order updates, and a seamless digital menu experience.
