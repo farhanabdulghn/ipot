@@ -141,28 +141,7 @@ class _ModalNoteSectionState extends State<ModalNoteSection> {
                       decoration: InputDecoration(
                         counterText: '',
                         hintText: l10n.modalNoteHint,
-                        hintStyle: TextStyle(
-                          fontSize: 13,
-                          color: Colors.grey.shade400,
-                        ),
-                        filled: true,
-                        fillColor: Colors.grey.shade50,
                         contentPadding: EdgeInsets.all(14),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.grey.shade200),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.grey.shade200),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(
-                            color: Colors.orange.shade300,
-                            width: 1.5,
-                          ),
-                        ),
                         suffixIcon: hasText
                             ? Padding(
                                 padding: EdgeInsets.only(top: 10, right: 10),
@@ -206,13 +185,7 @@ class _ModalNoteSectionState extends State<ModalNoteSection> {
                         Expanded(
                           child: OutlinedButton(
                             onPressed: () => Navigator.pop(context),
-                            style: OutlinedButton.styleFrom(
-                              padding: EdgeInsets.symmetric(vertical: 14),
-                              side: BorderSide(color: Colors.grey.shade200),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
+
                             child: Text(
                               l10n.cancel,
                               style: TextStyle(
@@ -228,15 +201,6 @@ class _ModalNoteSectionState extends State<ModalNoteSection> {
                           child: ElevatedButton(
                             onPressed: () =>
                                 Navigator.pop(context, _controller.text),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black87,
-                              foregroundColor: Colors.white,
-                              padding: EdgeInsets.symmetric(vertical: 14),
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               spacing: 6,

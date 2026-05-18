@@ -4,14 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static const _black = Color(0xFF1A1A1A);
-  static const _surface = Color(0xFFF7F7F7);
 
   static ThemeData lightTheme(BuildContext context) {
     final base = ThemeData.light(useMaterial3: true);
     final poppins = GoogleFonts.poppinsTextTheme(base.textTheme);
 
     return base.copyWith(
-      colorScheme: const ColorScheme.light(
+      colorScheme: ColorScheme.light(
         primary: _black,
         onPrimary: Colors.white,
         secondary: _black,
@@ -39,7 +38,7 @@ class AppTheme {
           foregroundColor: Colors.white,
           elevation: 0,
           shadowColor: Colors.transparent,
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
+          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           textStyle: GoogleFonts.poppins(
             fontSize: 15,
@@ -50,18 +49,23 @@ class AppTheme {
           ),
         ),
       ),
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
+      ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: _black,
-          side: const BorderSide(color: Color(0xFFE0E0E0)),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
+          side: BorderSide(color: Colors.grey.shade200),
+          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           textStyle: GoogleFonts.poppins(
             fontSize: 15,
             fontWeight: FontWeight.w600,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
       ),
@@ -77,12 +81,9 @@ class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: _surface,
+        fillColor: Colors.grey.shade50,
         hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 13),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 14,
-          vertical: 14,
-        ),
+        contentPadding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(color: Colors.grey.shade200),
@@ -93,7 +94,7 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: _black, width: 1.5),
+          borderSide: BorderSide(color: Colors.orange.shade300, width: 1.5),
         ),
       ),
       cardTheme: CardThemeData(
