@@ -1,6 +1,6 @@
 # iPot
 
-![Flutter](https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter)
+![Flutter](https://img.shields.io/badge/Flutter-3.41.9-blue?logo=flutter)
 ![Platform](https://img.shields.io/badge/Platform-Android-green)
 ![License](https://img.shields.io/badge/License-MIT-orange)
 
@@ -22,7 +22,7 @@ A modern Flutter-based ordering application designed to simplify restaurant tabl
 
 ### Core
 
-- Flutter
+- Flutter 3.41.9
 - Dart
 - Riverpod
 - REST API
