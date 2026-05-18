@@ -9,7 +9,13 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get selectLanguage => 'Choose your language';
+  String get welcome => 'Welcome';
+
+  @override
+  String get selectLanguage => 'Choose a language to get started';
+
+  @override
+  String get language => 'LANGUAGE';
 
   @override
   String get startScan => 'Scan Table';

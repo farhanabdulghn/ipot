@@ -9,7 +9,13 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
-  String get selectLanguage => '选择您的语言';
+  String get welcome => '欢迎';
+
+  @override
+  String get selectLanguage => '选择一种语言开始使用';
+
+  @override
+  String get language => '语言';
 
   @override
   String get startScan => '扫描桌台';

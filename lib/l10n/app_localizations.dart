@@ -98,283 +98,295 @@ abstract class AppLocalizations {
     Locale('zh'),
   ];
 
-  /// No description provided for @selectLanguage.
+  /// Main welcome text on onboarding screen
   ///
   /// In en, this message translates to:
-  /// **'Choose your language'**
+  /// **'Welcome'**
+  String get welcome;
+
+  /// Subtitle on language selection screen
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a language to get started'**
   String get selectLanguage;
 
-  /// No description provided for @startScan.
+  /// Language section label
+  ///
+  /// In en, this message translates to:
+  /// **'LANGUAGE'**
+  String get language;
+
+  /// Button text to start scanning table QR code
   ///
   /// In en, this message translates to:
   /// **'Scan Table'**
   String get startScan;
 
-  /// No description provided for @price.
+  /// Formatted price text
   ///
   /// In en, this message translates to:
   /// **'{amount}\$'**
   String price(String amount);
 
-  /// No description provided for @scanTitle.
+  /// Title on QR scanner screen
   ///
   /// In en, this message translates to:
   /// **'Scan the table QR code'**
   String get scanTitle;
 
-  /// No description provided for @scanSubtitle.
+  /// Instruction text for scanning QR code
   ///
   /// In en, this message translates to:
   /// **'Point your camera at the QR code\nplaced on your table'**
   String get scanSubtitle;
 
-  /// No description provided for @navMenu.
+  /// Bottom navigation menu tab
   ///
   /// In en, this message translates to:
   /// **'Menu'**
   String get navMenu;
 
-  /// No description provided for @navOrder.
+  /// Bottom navigation order tab
   ///
   /// In en, this message translates to:
   /// **'Order'**
   String get navOrder;
 
-  /// No description provided for @navCart.
+  /// Bottom navigation cart tab
   ///
   /// In en, this message translates to:
   /// **'Cart'**
   String get navCart;
 
-  /// No description provided for @addToCart.
+  /// Button text to add item to cart
   ///
   /// In en, this message translates to:
   /// **'Add to Cart · {price}\$'**
   String addToCart(String price);
 
-  /// No description provided for @chooseUpTo.
+  /// Option selection limit text
   ///
   /// In en, this message translates to:
   /// **'Choose {count}'**
   String chooseUpTo(int count);
 
-  /// No description provided for @required.
+  /// Required section label
   ///
   /// In en, this message translates to:
   /// **'Required'**
   String get required;
 
-  /// No description provided for @optional.
+  /// Optional section label
   ///
   /// In en, this message translates to:
   /// **'Optional'**
   String get optional;
 
-  /// No description provided for @noMenuAvailable.
+  /// Title when menu data is empty
   ///
   /// In en, this message translates to:
   /// **'No Menu Available'**
   String get noMenuAvailable;
 
-  /// No description provided for @noMenuSubtitle.
+  /// Subtitle when menu data is empty
   ///
   /// In en, this message translates to:
   /// **'There are currently no menu items to display. Please check again later.'**
   String get noMenuSubtitle;
 
-  /// No description provided for @errorTitle.
+  /// Generic error title
   ///
   /// In en, this message translates to:
   /// **'Something Went Wrong'**
   String get errorTitle;
 
-  /// No description provided for @errorSubtitle.
+  /// Generic error subtitle
   ///
   /// In en, this message translates to:
   /// **'An unexpected error occurred. Please try again.'**
   String get errorSubtitle;
 
-  /// No description provided for @tryAgain.
+  /// Retry button text
   ///
   /// In en, this message translates to:
   /// **'Try Again'**
   String get tryAgain;
 
-  /// No description provided for @orderStatusTitle.
+  /// Order status page title
   ///
   /// In en, this message translates to:
   /// **'Order Status'**
   String get orderStatusTitle;
 
-  /// No description provided for @orderNoActiveTitle.
+  /// Title when user has no active orders
   ///
   /// In en, this message translates to:
   /// **'No Active Orders'**
   String get orderNoActiveTitle;
 
-  /// No description provided for @orderNoActiveSubtitle.
+  /// Subtitle when user has no active orders
   ///
   /// In en, this message translates to:
   /// **'You don\'t have any active orders at the moment. Your order status will appear here once you place an order.'**
   String get orderNoActiveSubtitle;
 
-  /// No description provided for @orderFailedTitle.
+  /// Title shown when loading order fails
   ///
   /// In en, this message translates to:
   /// **'Failed to Load Order'**
   String get orderFailedTitle;
 
-  /// No description provided for @orderFailedSubtitle.
+  /// Subtitle shown when loading order fails
   ///
   /// In en, this message translates to:
   /// **'We were unable to retrieve your order status. Please try again.'**
   String get orderFailedSubtitle;
 
-  /// No description provided for @estimatedTime.
+  /// Estimated preparation time label
   ///
   /// In en, this message translates to:
   /// **'Estimated Time'**
   String get estimatedTime;
 
-  /// No description provided for @estimatedTimeMinutes.
+  /// Estimated preparation time in minutes
   ///
   /// In en, this message translates to:
   /// **'{minutes} minutes'**
   String estimatedTimeMinutes(int minutes);
 
-  /// No description provided for @orderNumber.
+  /// Order number label
   ///
   /// In en, this message translates to:
   /// **'Order Number'**
   String get orderNumber;
 
-  /// No description provided for @yourOrders.
+  /// User orders section title
   ///
   /// In en, this message translates to:
   /// **'Your Orders'**
   String get yourOrders;
 
-  /// No description provided for @totalItems.
+  /// Total items count
   ///
   /// In en, this message translates to:
   /// **'{count} items'**
   String totalItems(int count);
 
-  /// No description provided for @itemQty.
+  /// Item quantity text
   ///
   /// In en, this message translates to:
   /// **'{qty}x'**
   String itemQty(int qty);
 
-  /// No description provided for @cartTableTitle.
+  /// Table number title on cart page
   ///
   /// In en, this message translates to:
   /// **'Table {number}'**
   String cartTableTitle(int number);
 
-  /// No description provided for @customerNote.
+  /// Customer note label
   ///
   /// In en, this message translates to:
   /// **'Customer Note:'**
   String get customerNote;
 
-  /// No description provided for @customerNotePlaceholder.
+  /// Placeholder for customer note input
   ///
   /// In en, this message translates to:
   /// **'leave a note..'**
   String get customerNotePlaceholder;
 
-  /// No description provided for @cartTotal.
+  /// Cart total label
   ///
   /// In en, this message translates to:
   /// **'Total'**
   String get cartTotal;
 
-  /// No description provided for @checkout.
+  /// Checkout button text
   ///
   /// In en, this message translates to:
   /// **'Checkout'**
   String get checkout;
 
-  /// No description provided for @checkoutConfirmContent.
+  /// Checkout confirmation dialog content
   ///
   /// In en, this message translates to:
   /// **'Once an order has been placed, it cannot be changed. Please make sure to confirm your order correctly.'**
   String get checkoutConfirmContent;
 
-  /// No description provided for @checkoutFailed.
+  /// Checkout failed error message
   ///
   /// In en, this message translates to:
   /// **'Checkout failed'**
   String get checkoutFailed;
 
-  /// No description provided for @removeItemContent.
+  /// Confirmation text for removing cart item
   ///
   /// In en, this message translates to:
   /// **'Are you sure you want to remove this item from your shopping cart?'**
   String get removeItemContent;
 
-  /// No description provided for @delete.
+  /// Delete button text
   ///
   /// In en, this message translates to:
   /// **'Delete'**
   String get delete;
 
-  /// No description provided for @cancel.
+  /// Cancel button text
   ///
   /// In en, this message translates to:
   /// **'Cancel'**
   String get cancel;
 
-  /// No description provided for @modalNoteTitle.
+  /// Title for note modal
   ///
   /// In en, this message translates to:
   /// **'Add a note'**
   String get modalNoteTitle;
 
-  /// No description provided for @modalNoteSubtitle.
+  /// Subtitle for note modal
   ///
   /// In en, this message translates to:
   /// **'Let us know your preferences'**
   String get modalNoteSubtitle;
 
-  /// No description provided for @modalNoteHint.
+  /// Hint text for note input
   ///
   /// In en, this message translates to:
   /// **'e.g. no onions, extra spicy, allergy info...'**
   String get modalNoteHint;
 
-  /// No description provided for @saveNote.
+  /// Save note button text
   ///
   /// In en, this message translates to:
   /// **'Save note'**
   String get saveNote;
 
-  /// No description provided for @orderStatusPendingSubtitle.
+  /// Pending order status description
   ///
   /// In en, this message translates to:
   /// **'Waiting for restaurant confirmation'**
   String get orderStatusPendingSubtitle;
 
-  /// No description provided for @orderStatusConfirmedSubtitle.
+  /// Confirmed order status description
   ///
   /// In en, this message translates to:
   /// **'Your order has been confirmed'**
   String get orderStatusConfirmedSubtitle;
 
-  /// No description provided for @orderStatusPreparingSubtitle.
+  /// Preparing order status description
   ///
   /// In en, this message translates to:
   /// **'Chef is preparing your order'**
   String get orderStatusPreparingSubtitle;
 
-  /// No description provided for @orderStatusReadySubtitle.
+  /// Ready order status description
   ///
   /// In en, this message translates to:
   /// **'Your order is ready to serve'**
   String get orderStatusReadySubtitle;
 
-  /// No description provided for @orderStatusServedSubtitle.
+  /// Served order status description
   ///
   /// In en, this message translates to:
   /// **'Enjoy your meal'**

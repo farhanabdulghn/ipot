@@ -1,61 +1,290 @@
 {
   "@@locale": "en",
-  "selectLanguage": "Choose your language",
+
+  "welcome": "Welcome",
+  "@welcome": {
+    "description": "Main welcome text on onboarding screen"
+  },
+
+  "selectLanguage": "Choose a language to get started",
+  "@selectLanguage": {
+    "description": "Subtitle on language selection screen"
+  },
+
+  "language": "LANGUAGE",
+  "@language": {
+    "description": "Language section label"
+  },
+
   "startScan": "Scan Table",
+  "@startScan": {
+    "description": "Button text to start scanning table QR code"
+  },
+
   "price": "{amount}$",
   "@price": {
+    "description": "Formatted price text",
     "placeholders": {
-      "amount": { "type": "String" }
+      "amount": {
+        "type": "String",
+        "example": "25"
+      }
     }
   },
+
   "scanTitle": "Scan the table QR code",
+  "@scanTitle": {
+    "description": "Title on QR scanner screen"
+  },
+
   "scanSubtitle": "Point your camera at the QR code\nplaced on your table",
+  "@scanSubtitle": {
+    "description": "Instruction text for scanning QR code"
+  },
+
   "navMenu": "Menu",
+  "@navMenu": {
+    "description": "Bottom navigation menu tab"
+  },
+
   "navOrder": "Order",
+  "@navOrder": {
+    "description": "Bottom navigation order tab"
+  },
+
   "navCart": "Cart",
+  "@navCart": {
+    "description": "Bottom navigation cart tab"
+  },
+
   "addToCart": "Add to Cart · {price}$",
-  "@addToCart": { "placeholders": { "price": { "type": "String" } } },
+  "@addToCart": {
+    "description": "Button text to add item to cart",
+    "placeholders": {
+      "price": {
+        "type": "String",
+        "example": "15"
+      }
+    }
+  },
+
   "chooseUpTo": "Choose {count}",
-  "@chooseUpTo": { "placeholders": { "count": { "type": "int" } } },
+  "@chooseUpTo": {
+    "description": "Option selection limit text",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "2"
+      }
+    }
+  },
+
   "required": "Required",
+  "@required": {
+    "description": "Required section label"
+  },
+
   "optional": "Optional",
+  "@optional": {
+    "description": "Optional section label"
+  },
+
   "noMenuAvailable": "No Menu Available",
+  "@noMenuAvailable": {
+    "description": "Title when menu data is empty"
+  },
+
   "noMenuSubtitle": "There are currently no menu items to display. Please check again later.",
+  "@noMenuSubtitle": {
+    "description": "Subtitle when menu data is empty"
+  },
+
   "errorTitle": "Something Went Wrong",
+  "@errorTitle": {
+    "description": "Generic error title"
+  },
+
   "errorSubtitle": "An unexpected error occurred. Please try again.",
+  "@errorSubtitle": {
+    "description": "Generic error subtitle"
+  },
+
   "tryAgain": "Try Again",
+  "@tryAgain": {
+    "description": "Retry button text"
+  },
+
   "orderStatusTitle": "Order Status",
+  "@orderStatusTitle": {
+    "description": "Order status page title"
+  },
+
   "orderNoActiveTitle": "No Active Orders",
+  "@orderNoActiveTitle": {
+    "description": "Title when user has no active orders"
+  },
+
   "orderNoActiveSubtitle": "You don't have any active orders at the moment. Your order status will appear here once you place an order.",
+  "@orderNoActiveSubtitle": {
+    "description": "Subtitle when user has no active orders"
+  },
+
   "orderFailedTitle": "Failed to Load Order",
+  "@orderFailedTitle": {
+    "description": "Title shown when loading order fails"
+  },
+
   "orderFailedSubtitle": "We were unable to retrieve your order status. Please try again.",
+  "@orderFailedSubtitle": {
+    "description": "Subtitle shown when loading order fails"
+  },
+
   "estimatedTime": "Estimated Time",
+  "@estimatedTime": {
+    "description": "Estimated preparation time label"
+  },
+
   "estimatedTimeMinutes": "{minutes} minutes",
-  "@estimatedTimeMinutes": { "placeholders": { "minutes": { "type": "int" } } },
+  "@estimatedTimeMinutes": {
+    "description": "Estimated preparation time in minutes",
+    "placeholders": {
+      "minutes": {
+        "type": "int",
+        "example": "15"
+      }
+    }
+  },
+
   "orderNumber": "Order Number",
+  "@orderNumber": {
+    "description": "Order number label"
+  },
+
   "yourOrders": "Your Orders",
+  "@yourOrders": {
+    "description": "User orders section title"
+  },
+
   "totalItems": "{count} items",
-  "@totalItems": { "placeholders": { "count": { "type": "int" } } },
+  "@totalItems": {
+    "description": "Total items count",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+
   "itemQty": "{qty}x",
-  "@itemQty": { "placeholders": { "qty": { "type": "int" } } },
+  "@itemQty": {
+    "description": "Item quantity text",
+    "placeholders": {
+      "qty": {
+        "type": "int",
+        "example": "2"
+      }
+    }
+  },
+
   "cartTableTitle": "Table {number}",
-  "@cartTableTitle": { "placeholders": { "number": { "type": "int" } } },
+  "@cartTableTitle": {
+    "description": "Table number title on cart page",
+    "placeholders": {
+      "number": {
+        "type": "int",
+        "example": "12"
+      }
+    }
+  },
+
   "customerNote": "Customer Note:",
+  "@customerNote": {
+    "description": "Customer note label"
+  },
+
   "customerNotePlaceholder": "leave a note..",
+  "@customerNotePlaceholder": {
+    "description": "Placeholder for customer note input"
+  },
+
   "cartTotal": "Total",
+  "@cartTotal": {
+    "description": "Cart total label"
+  },
+
   "checkout": "Checkout",
+  "@checkout": {
+    "description": "Checkout button text"
+  },
+
   "checkoutConfirmContent": "Once an order has been placed, it cannot be changed. Please make sure to confirm your order correctly.",
+  "@checkoutConfirmContent": {
+    "description": "Checkout confirmation dialog content"
+  },
+
   "checkoutFailed": "Checkout failed",
+  "@checkoutFailed": {
+    "description": "Checkout failed error message"
+  },
+
   "removeItemContent": "Are you sure you want to remove this item from your shopping cart?",
+  "@removeItemContent": {
+    "description": "Confirmation text for removing cart item"
+  },
+
   "delete": "Delete",
+  "@delete": {
+    "description": "Delete button text"
+  },
+
   "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button text"
+  },
+
   "modalNoteTitle": "Add a note",
+  "@modalNoteTitle": {
+    "description": "Title for note modal"
+  },
+
   "modalNoteSubtitle": "Let us know your preferences",
+  "@modalNoteSubtitle": {
+    "description": "Subtitle for note modal"
+  },
+
   "modalNoteHint": "e.g. no onions, extra spicy, allergy info...",
+  "@modalNoteHint": {
+    "description": "Hint text for note input"
+  },
+
   "saveNote": "Save note",
+  "@saveNote": {
+    "description": "Save note button text"
+  },
+
   "orderStatusPendingSubtitle": "Waiting for restaurant confirmation",
+  "@orderStatusPendingSubtitle": {
+    "description": "Pending order status description"
+  },
+
   "orderStatusConfirmedSubtitle": "Your order has been confirmed",
+  "@orderStatusConfirmedSubtitle": {
+    "description": "Confirmed order status description"
+  },
+
   "orderStatusPreparingSubtitle": "Chef is preparing your order",
+  "@orderStatusPreparingSubtitle": {
+    "description": "Preparing order status description"
+  },
+
   "orderStatusReadySubtitle": "Your order is ready to serve",
-  "orderStatusServedSubtitle": "Enjoy your meal"
+  "@orderStatusReadySubtitle": {
+    "description": "Ready order status description"
+  },
+
+  "orderStatusServedSubtitle": "Enjoy your meal",
+  "@orderStatusServedSubtitle": {
+    "description": "Served order status description"
+  }
 }
