@@ -21,6 +21,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get startScan => '扫描桌台';
 
   @override
+  String get menuNotFound => '未找到菜单';
+
+  @override
   String price(String amount) {
     return '$amount\$';
   }
@@ -155,16 +158,31 @@ class AppLocalizationsZh extends AppLocalizations {
   String get saveNote => '保存备注';
 
   @override
+  String get orderStatusPendingTitle => '待确认';
+
+  @override
   String get orderStatusPendingSubtitle => '等待餐厅确认';
+
+  @override
+  String get orderStatusConfirmedTitle => '已确认';
 
   @override
   String get orderStatusConfirmedSubtitle => '您的订单已确认';
 
   @override
+  String get orderStatusPreparingTitle => '准备中';
+
+  @override
   String get orderStatusPreparingSubtitle => '厨师正在准备您的餐点';
 
   @override
+  String get orderStatusReadyTitle => '已完成';
+
+  @override
   String get orderStatusReadySubtitle => '您的餐点已准备好，即将上桌';
+
+  @override
+  String get orderStatusServedTitle => '已上桌';
 
   @override
   String get orderStatusServedSubtitle => '请慢用';

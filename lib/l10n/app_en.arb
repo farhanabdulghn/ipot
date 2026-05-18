@@ -21,6 +21,11 @@
     "description": "Button text to start scanning table QR code"
   },
 
+  "menuNotFound": "Menu not found",
+  "@menuNotFound": {
+    "description": "Snackbar message when scanned menu/table is not found"
+  },
+
   "price": "{amount}$",
   "@price": {
     "description": "Formatted price text",
@@ -263,9 +268,19 @@
     "description": "Save note button text"
   },
 
+  "orderStatusPendingTitle": "Pending",
+  "@orderStatusPendingTitle": {
+    "description": "Pending order status title"
+  },
+
   "orderStatusPendingSubtitle": "Waiting for restaurant confirmation",
   "@orderStatusPendingSubtitle": {
     "description": "Pending order status description"
+  },
+
+  "orderStatusConfirmedTitle": "Confirmed",
+  "@orderStatusConfirmedTitle": {
+    "description": "Confirmed order status title"
   },
 
   "orderStatusConfirmedSubtitle": "Your order has been confirmed",
@@ -273,14 +288,29 @@
     "description": "Confirmed order status description"
   },
 
+  "orderStatusPreparingTitle": "Preparing",
+  "@orderStatusPreparingTitle": {
+    "description": "Preparing order status title"
+  },
+
   "orderStatusPreparingSubtitle": "Chef is preparing your order",
   "@orderStatusPreparingSubtitle": {
     "description": "Preparing order status description"
   },
 
+  "orderStatusReadyTitle": "Ready",
+  "@orderStatusReadyTitle": {
+    "description": "Ready order status title"
+  },
+
   "orderStatusReadySubtitle": "Your order is ready to serve",
   "@orderStatusReadySubtitle": {
     "description": "Ready order status description"
+  },
+
+  "orderStatusServedTitle": "Served",
+  "@orderStatusServedTitle": {
+    "description": "Served order status title"
   },
 
   "orderStatusServedSubtitle": "Enjoy your meal",

@@ -21,6 +21,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get startScan => 'Scan Table';
 
   @override
+  String get menuNotFound => 'Menu not found';
+
+  @override
   String price(String amount) {
     return '$amount\$';
   }
@@ -161,17 +164,32 @@ class AppLocalizationsEn extends AppLocalizations {
   String get saveNote => 'Save note';
 
   @override
+  String get orderStatusPendingTitle => 'Pending';
+
+  @override
   String get orderStatusPendingSubtitle =>
       'Waiting for restaurant confirmation';
+
+  @override
+  String get orderStatusConfirmedTitle => 'Confirmed';
 
   @override
   String get orderStatusConfirmedSubtitle => 'Your order has been confirmed';
 
   @override
+  String get orderStatusPreparingTitle => 'Preparing';
+
+  @override
   String get orderStatusPreparingSubtitle => 'Chef is preparing your order';
 
   @override
+  String get orderStatusReadyTitle => 'Ready';
+
+  @override
   String get orderStatusReadySubtitle => 'Your order is ready to serve';
+
+  @override
+  String get orderStatusServedTitle => 'Served';
 
   @override
   String get orderStatusServedSubtitle => 'Enjoy your meal';

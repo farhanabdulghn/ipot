@@ -122,6 +122,12 @@ abstract class AppLocalizations {
   /// **'Scan Table'**
   String get startScan;
 
+  /// Snackbar message when scanned menu/table is not found
+  ///
+  /// In en, this message translates to:
+  /// **'Menu not found'**
+  String get menuNotFound;
+
   /// Formatted price text
   ///
   /// In en, this message translates to:
@@ -362,11 +368,23 @@ abstract class AppLocalizations {
   /// **'Save note'**
   String get saveNote;
 
+  /// Pending order status title
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get orderStatusPendingTitle;
+
   /// Pending order status description
   ///
   /// In en, this message translates to:
   /// **'Waiting for restaurant confirmation'**
   String get orderStatusPendingSubtitle;
+
+  /// Confirmed order status title
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed'**
+  String get orderStatusConfirmedTitle;
 
   /// Confirmed order status description
   ///
@@ -374,17 +392,35 @@ abstract class AppLocalizations {
   /// **'Your order has been confirmed'**
   String get orderStatusConfirmedSubtitle;
 
+  /// Preparing order status title
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing'**
+  String get orderStatusPreparingTitle;
+
   /// Preparing order status description
   ///
   /// In en, this message translates to:
   /// **'Chef is preparing your order'**
   String get orderStatusPreparingSubtitle;
 
+  /// Ready order status title
+  ///
+  /// In en, this message translates to:
+  /// **'Ready'**
+  String get orderStatusReadyTitle;
+
   /// Ready order status description
   ///
   /// In en, this message translates to:
   /// **'Your order is ready to serve'**
   String get orderStatusReadySubtitle;
+
+  /// Served order status title
+  ///
+  /// In en, this message translates to:
+  /// **'Served'**
+  String get orderStatusServedTitle;
 
   /// Served order status description
   ///

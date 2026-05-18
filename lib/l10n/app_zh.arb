@@ -10,6 +10,8 @@
 
   "scanTitle": "扫描桌台二维码",
   "scanSubtitle": "将相机对准桌台上的二维码",
+  
+  "menuNotFound": "未找到菜单",
 
   "navMenu": "菜单",
   "navOrder": "订单",
@@ -70,9 +72,14 @@
 
   "saveNote": "保存备注",
 
+  "orderStatusPendingTitle": "待确认",
   "orderStatusPendingSubtitle": "等待餐厅确认",
+  "orderStatusConfirmedTitle": "已确认",
   "orderStatusConfirmedSubtitle": "您的订单已确认",
+  "orderStatusPreparingTitle": "准备中",
   "orderStatusPreparingSubtitle": "厨师正在准备您的餐点",
+  "orderStatusReadyTitle": "已完成",
   "orderStatusReadySubtitle": "您的餐点已准备好，即将上桌",
+  "orderStatusServedTitle": "已上桌",
   "orderStatusServedSubtitle": "请慢用"
 }
