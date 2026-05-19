@@ -17,10 +17,10 @@ class ScannerScreen extends ConsumerStatefulWidget {
   const ScannerScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _ScannerScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => ScannerScreenState(); // ← hapus _
 }
 
-class _ScannerScreenState extends ConsumerState<ScannerScreen>
+class ScannerScreenState extends ConsumerState<ScannerScreen>
     with SingleTickerProviderStateMixin {
   final _controller = MobileScannerController();
   bool _torchOn = false;
@@ -29,14 +29,11 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen>
   late final AnimationController _lineController;
   late final Animation<double> _lineAnim;
 
-  void _toggleTorch() {
-    setState(() => _torchOn = !_torchOn);
-    _controller.toggleTorch();
-  }
+  @visibleForTesting
+  Future<void> handleBarcodeForTest(String value) => _processScan(value);
 
-  void _handleBarcode(BarcodeCapture barcodes) async {
+  Future<void> _processScan(String value) async {
     if (_scanned) return;
-    final value = barcodes.barcodes.firstOrNull?.rawValue ?? '';
     if (value.isEmpty) return;
 
     setState(() => _scanned = true);
@@ -63,6 +60,16 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen>
       setState(() => _scanned = false);
       _controller.start();
     }
+  }
+
+  void _toggleTorch() {
+    setState(() => _torchOn = !_torchOn);
+    _controller.toggleTorch();
+  }
+
+  void _handleBarcode(BarcodeCapture barcodes) async {
+    final value = barcodes.barcodes.firstOrNull?.rawValue ?? '';
+    await _processScan(value);
   }
 
   List<Widget> _buildCorners(double size, double radius) {
@@ -224,11 +231,13 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppIconButton(
+                    key: const Key('back_button'),
                     onTap: () => Navigator.pop(context),
                     icon: PhosphorIconsBold.arrowLeft,
                     type: TypeVariant.transparent,
                   ),
                   AppIconButton(
+                    key: const Key('torch_button'),
                     onTap: _toggleTorch,
                     icon: _torchOn
                         ? PhosphorIconsFill.flashlight
