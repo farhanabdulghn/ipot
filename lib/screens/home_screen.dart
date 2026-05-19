@@ -84,6 +84,7 @@ class HomeScreen extends ConsumerWidget {
                 return Padding(
                   padding: EdgeInsets.only(bottom: 10),
                   child: GestureDetector(
+                    key: Key('lang_card_${lang.locale.languageCode}'),
                     onTap: () =>
                         ref.read(localeProvider.notifier).set(lang.locale),
                     child: AnimatedContainer(
@@ -161,6 +162,7 @@ class HomeScreen extends ConsumerWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
+                  key: const Key('start_scan_button'),
                   onPressed: () =>
                       Navigator.pushNamed(context, AppRoute.scanner),
                   child: Row(
