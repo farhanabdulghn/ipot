@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ipot/components/buttons/app_icon_button.dart';
@@ -260,6 +261,21 @@ class ScannerScreenState extends ConsumerState<ScannerScreen>
                 child: Column(
                   spacing: 8,
                   children: [
+                    if (kDebugMode)
+                      ElevatedButton.icon(
+                        onPressed: () => _processScan('T001'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.amber.withValues(alpha: 0.85),
+                        ),
+                        icon: PhosphorIcon(
+                          PhosphorIconsFill.bug,
+                          color: Colors.black,
+                        ),
+                        label: Text(
+                          'Debug: T001',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
                     Text(
                       l10n.scanTitle,
                       textAlign: TextAlign.center,
