@@ -9,7 +9,7 @@ import 'package:ipot/state/actions/order/order_state.dart';
 import 'package:ipot/state/stores/page_handle/page_handle_notifier.dart';
 import 'package:ipot/utils/enums.dart';
 import 'package:ipot/utils/functions.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 import 'package:pusher_channels_flutter/pusher_channels_flutter.dart';
 
 class OrderScreen extends ConsumerStatefulWidget {
@@ -64,7 +64,7 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
         : Colors.grey;
 
     Widget stepIcon = PhosphorIcon(
-      props.icon(PhosphorIconsStyle.duotone),
+      props.duotoneIcon!,
       size: 34,
       color: activeColor,
     );

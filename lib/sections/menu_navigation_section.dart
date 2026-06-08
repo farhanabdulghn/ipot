@@ -5,12 +5,24 @@ import 'package:ipot/l10n/app_localizations.dart';
 import 'package:ipot/models/component_props/component_props_model.dart';
 import 'package:ipot/state/stores/cart/cart_notifier.dart';
 import 'package:ipot/state/stores/page_handle/page_handle_notifier.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 final _items = [
-  ComponentPropsModel(title: (l) => l.navMenu, icon: PhosphorIcons.forkKnife),
-  ComponentPropsModel(title: (l) => l.navOrder, icon: PhosphorIcons.receipt),
-  ComponentPropsModel(title: (l) => l.navCart, icon: PhosphorIcons.basket),
+  ComponentPropsModel(
+    title: (l) => l.navMenu,
+    regularIcon: PhosphorIconsRegular.forkKnife,
+    fillIcon: PhosphorIconsFill.forkKnife,
+  ),
+  ComponentPropsModel(
+    title: (l) => l.navOrder,
+    regularIcon: PhosphorIconsRegular.receipt,
+    fillIcon: PhosphorIconsFill.receipt,
+  ),
+  ComponentPropsModel(
+    title: (l) => l.navCart,
+    regularIcon: PhosphorIconsRegular.basket,
+    fillIcon: PhosphorIconsFill.receipt,
+  ),
 ];
 
 class MenuNavigationSection extends ConsumerStatefulWidget {
@@ -58,11 +70,7 @@ class _MenuNavigationSectionState extends ConsumerState<MenuNavigationSection> {
             Widget iconWidget = Padding(
               padding: EdgeInsets.all(4),
               child: PhosphorIcon(
-                item.icon(
-                  selected
-                      ? PhosphorIconsStyle.fill
-                      : PhosphorIconsStyle.regular,
-                ),
+                selected ? item.fillIcon! : item.regularIcon!,
                 color: color,
                 size: 24,
               ),
@@ -83,6 +91,7 @@ class _MenuNavigationSectionState extends ConsumerState<MenuNavigationSection> {
 
             return Expanded(
               child: TextButton(
+                key: Key('nav_tab_$index'),
                 onPressed: () => ref.read(provider.notifier).setPage(index),
                 style: TextButton.styleFrom(
                   overlayColor: Colors.transparent,

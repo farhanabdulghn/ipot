@@ -11,7 +11,7 @@ import 'package:ipot/state/stores/cart/cart_notifier.dart';
 import 'package:ipot/utils/app_route_annotation.dart';
 import 'package:ipot/utils/enums.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 @AutoRoute()
 class ScannerScreen extends ConsumerStatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ipot/utils/enums.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class AppIconButton extends StatelessWidget {
   final void Function()? onTap;

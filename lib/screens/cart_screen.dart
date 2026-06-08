@@ -244,6 +244,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                       ],
                     ),
                     ElevatedButton(
+                      key: const Key('checkout_button'),
                       onPressed: _checkout,
                       child: Text(l10n.checkout),
                     ),

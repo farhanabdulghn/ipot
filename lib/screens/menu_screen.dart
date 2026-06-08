@@ -9,7 +9,7 @@ import 'package:ipot/sections/feedback_section.dart';
 import 'package:ipot/sections/modal_detail_menu_section.dart';
 import 'package:ipot/state/actions/menu/menu_state.dart';
 import 'package:ipot/state/stores/page_handle/page_handle_notifier.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class MenuScreen extends ConsumerWidget {
   final String tableId;

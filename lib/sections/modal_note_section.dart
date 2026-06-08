@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ipot/extensions/extensions.dart';
 import 'package:ipot/l10n/app_localizations.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class ModalNoteSection extends StatefulWidget {
   final String? note;

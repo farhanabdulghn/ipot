@@ -7,35 +7,35 @@ extension OrderStatusExtension on OrderStatus {
         return ComponentPropsModel(
           title: (l) => l.orderStatusPendingTitle,
           subtitle: (l) => l.orderStatusPendingSubtitle,
-          icon: PhosphorIcons.spinnerGap,
+          duotoneIcon: PhosphorIconsDuotone.spinnerGap,
           color: Colors.orange,
         );
       case OrderStatus.confirmed:
         return ComponentPropsModel(
           title: (l) => l.orderStatusConfirmedTitle,
           subtitle: (l) => l.orderStatusConfirmedSubtitle,
-          icon: PhosphorIcons.checkCircle,
+          duotoneIcon: PhosphorIconsDuotone.checkCircle,
           color: Colors.indigo,
         );
       case OrderStatus.preparing:
         return ComponentPropsModel(
           title: (l) => l.orderStatusPreparingTitle,
           subtitle: (l) => l.orderStatusPreparingSubtitle,
-          icon: PhosphorIcons.forkKnife,
+          duotoneIcon: PhosphorIconsDuotone.forkKnife,
           color: Colors.deepPurple,
         );
       case OrderStatus.ready:
         return ComponentPropsModel(
           title: (l) => l.orderStatusReadyTitle,
           subtitle: (l) => l.orderStatusReadySubtitle,
-          icon: PhosphorIcons.package,
+          duotoneIcon: PhosphorIconsDuotone.package,
           color: Colors.green,
         );
       case OrderStatus.served:
         return ComponentPropsModel(
           title: (l) => l.orderStatusServedTitle,
           subtitle: (l) => l.orderStatusServedSubtitle,
-          icon: PhosphorIcons.smiley,
+          duotoneIcon: PhosphorIconsDuotone.smiley,
           color: Colors.teal,
         );
     }

@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ComponentPropsModel {
 
- String Function(AppLocalizations) get title; String Function(AppLocalizations)? get subtitle; IconData Function(PhosphorIconsStyle) get icon; Color? get color;
+ String Function(AppLocalizations) get title; String Function(AppLocalizations)? get subtitle; Object? get regularIcon; Object? get fillIcon; Object? get duotoneIcon; Color? get color;
 /// Create a copy of ComponentPropsModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $ComponentPropsModelCopyWith<ComponentPropsModel> get copyWith => _$ComponentPro
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ComponentPropsModel&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.color, color) || other.color == color));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ComponentPropsModel&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&const DeepCollectionEquality().equals(other.regularIcon, regularIcon)&&const DeepCollectionEquality().equals(other.fillIcon, fillIcon)&&const DeepCollectionEquality().equals(other.duotoneIcon, duotoneIcon)&&(identical(other.color, color) || other.color == color));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,subtitle,icon,color);
+int get hashCode => Object.hash(runtimeType,title,subtitle,const DeepCollectionEquality().hash(regularIcon),const DeepCollectionEquality().hash(fillIcon),const DeepCollectionEquality().hash(duotoneIcon),color);
 
 @override
 String toString() {
-  return 'ComponentPropsModel(title: $title, subtitle: $subtitle, icon: $icon, color: $color)';
+  return 'ComponentPropsModel(title: $title, subtitle: $subtitle, regularIcon: $regularIcon, fillIcon: $fillIcon, duotoneIcon: $duotoneIcon, color: $color)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $ComponentPropsModelCopyWith<$Res>  {
   factory $ComponentPropsModelCopyWith(ComponentPropsModel value, $Res Function(ComponentPropsModel) _then) = _$ComponentPropsModelCopyWithImpl;
 @useResult
 $Res call({
- String Function(AppLocalizations) title, String Function(AppLocalizations)? subtitle, IconData Function(PhosphorIconsStyle) icon, Color? color
+ String Function(AppLocalizations) title, String Function(AppLocalizations)? subtitle, Object? regularIcon, Object? fillIcon, Object? duotoneIcon, Color? color
 });
 
 
@@ -62,12 +62,11 @@ class _$ComponentPropsModelCopyWithImpl<$Res>
 
 /// Create a copy of ComponentPropsModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? subtitle = freezed,Object? icon = null,Object? color = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? subtitle = freezed,Object? regularIcon = freezed,Object? fillIcon = freezed,Object? duotoneIcon = freezed,Object? color = freezed,}) {
   return _then(_self.copyWith(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String Function(AppLocalizations),subtitle: freezed == subtitle ? _self.subtitle : subtitle // ignore: cast_nullable_to_non_nullable
-as String Function(AppLocalizations)?,icon: null == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
-as IconData Function(PhosphorIconsStyle),color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
+as String Function(AppLocalizations)?,regularIcon: freezed == regularIcon ? _self.regularIcon : regularIcon ,fillIcon: freezed == fillIcon ? _self.fillIcon : fillIcon ,duotoneIcon: freezed == duotoneIcon ? _self.duotoneIcon : duotoneIcon ,color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
 as Color?,
   ));
 }
@@ -153,10 +152,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String Function(AppLocalizations) title,  String Function(AppLocalizations)? subtitle,  IconData Function(PhosphorIconsStyle) icon,  Color? color)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String Function(AppLocalizations) title,  String Function(AppLocalizations)? subtitle,  Object? regularIcon,  Object? fillIcon,  Object? duotoneIcon,  Color? color)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ComponentPropsModel() when $default != null:
-return $default(_that.title,_that.subtitle,_that.icon,_that.color);case _:
+return $default(_that.title,_that.subtitle,_that.regularIcon,_that.fillIcon,_that.duotoneIcon,_that.color);case _:
   return orElse();
 
 }
@@ -174,10 +173,10 @@ return $default(_that.title,_that.subtitle,_that.icon,_that.color);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String Function(AppLocalizations) title,  String Function(AppLocalizations)? subtitle,  IconData Function(PhosphorIconsStyle) icon,  Color? color)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String Function(AppLocalizations) title,  String Function(AppLocalizations)? subtitle,  Object? regularIcon,  Object? fillIcon,  Object? duotoneIcon,  Color? color)  $default,) {final _that = this;
 switch (_that) {
 case _ComponentPropsModel():
-return $default(_that.title,_that.subtitle,_that.icon,_that.color);case _:
+return $default(_that.title,_that.subtitle,_that.regularIcon,_that.fillIcon,_that.duotoneIcon,_that.color);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -194,10 +193,10 @@ return $default(_that.title,_that.subtitle,_that.icon,_that.color);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String Function(AppLocalizations) title,  String Function(AppLocalizations)? subtitle,  IconData Function(PhosphorIconsStyle) icon,  Color? color)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String Function(AppLocalizations) title,  String Function(AppLocalizations)? subtitle,  Object? regularIcon,  Object? fillIcon,  Object? duotoneIcon,  Color? color)?  $default,) {final _that = this;
 switch (_that) {
 case _ComponentPropsModel() when $default != null:
-return $default(_that.title,_that.subtitle,_that.icon,_that.color);case _:
+return $default(_that.title,_that.subtitle,_that.regularIcon,_that.fillIcon,_that.duotoneIcon,_that.color);case _:
   return null;
 
 }
@@ -209,12 +208,14 @@ return $default(_that.title,_that.subtitle,_that.icon,_that.color);case _:
 
 
 class _ComponentPropsModel implements ComponentPropsModel {
-  const _ComponentPropsModel({required this.title, this.subtitle, required this.icon, this.color});
+  const _ComponentPropsModel({required this.title, this.subtitle, this.regularIcon, this.fillIcon, this.duotoneIcon, this.color});
   
 
 @override final  String Function(AppLocalizations) title;
 @override final  String Function(AppLocalizations)? subtitle;
-@override final  IconData Function(PhosphorIconsStyle) icon;
+@override final  Object? regularIcon;
+@override final  Object? fillIcon;
+@override final  Object? duotoneIcon;
 @override final  Color? color;
 
 /// Create a copy of ComponentPropsModel
@@ -227,16 +228,16 @@ _$ComponentPropsModelCopyWith<_ComponentPropsModel> get copyWith => __$Component
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ComponentPropsModel&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.color, color) || other.color == color));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ComponentPropsModel&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&const DeepCollectionEquality().equals(other.regularIcon, regularIcon)&&const DeepCollectionEquality().equals(other.fillIcon, fillIcon)&&const DeepCollectionEquality().equals(other.duotoneIcon, duotoneIcon)&&(identical(other.color, color) || other.color == color));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,subtitle,icon,color);
+int get hashCode => Object.hash(runtimeType,title,subtitle,const DeepCollectionEquality().hash(regularIcon),const DeepCollectionEquality().hash(fillIcon),const DeepCollectionEquality().hash(duotoneIcon),color);
 
 @override
 String toString() {
-  return 'ComponentPropsModel(title: $title, subtitle: $subtitle, icon: $icon, color: $color)';
+  return 'ComponentPropsModel(title: $title, subtitle: $subtitle, regularIcon: $regularIcon, fillIcon: $fillIcon, duotoneIcon: $duotoneIcon, color: $color)';
 }
 
 
@@ -247,7 +248,7 @@ abstract mixin class _$ComponentPropsModelCopyWith<$Res> implements $ComponentPr
   factory _$ComponentPropsModelCopyWith(_ComponentPropsModel value, $Res Function(_ComponentPropsModel) _then) = __$ComponentPropsModelCopyWithImpl;
 @override @useResult
 $Res call({
- String Function(AppLocalizations) title, String Function(AppLocalizations)? subtitle, IconData Function(PhosphorIconsStyle) icon, Color? color
+ String Function(AppLocalizations) title, String Function(AppLocalizations)? subtitle, Object? regularIcon, Object? fillIcon, Object? duotoneIcon, Color? color
 });
 
 
@@ -264,12 +265,11 @@ class __$ComponentPropsModelCopyWithImpl<$Res>
 
 /// Create a copy of ComponentPropsModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? subtitle = freezed,Object? icon = null,Object? color = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? subtitle = freezed,Object? regularIcon = freezed,Object? fillIcon = freezed,Object? duotoneIcon = freezed,Object? color = freezed,}) {
   return _then(_ComponentPropsModel(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String Function(AppLocalizations),subtitle: freezed == subtitle ? _self.subtitle : subtitle // ignore: cast_nullable_to_non_nullable
-as String Function(AppLocalizations)?,icon: null == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
-as IconData Function(PhosphorIconsStyle),color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
+as String Function(AppLocalizations)?,regularIcon: freezed == regularIcon ? _self.regularIcon : regularIcon ,fillIcon: freezed == fillIcon ? _self.fillIcon : fillIcon ,duotoneIcon: freezed == duotoneIcon ? _self.duotoneIcon : duotoneIcon ,color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
 as Color?,
   ));
 }

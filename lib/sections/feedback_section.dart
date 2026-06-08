@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ipot/l10n/app_localizations.dart';
 import 'package:ipot/state/stores/page_handle/page_handle_notifier.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class FeedbackSection extends ConsumerWidget {
   final String? title;
@@ -83,6 +83,7 @@ class FeedbackSection extends ConsumerWidget {
               if (_isError && onTap != null) ...[
                 SizedBox(height: 28),
                 OutlinedButton.icon(
+                  key: const Key('retry_button'),
                   onPressed: onTap,
                   icon: Icon(PhosphorIconsRegular.arrowClockwise, size: 16),
                   label: Text(resolvedButtonText),

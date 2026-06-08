@@ -4,7 +4,7 @@ import 'package:ipot/app_routes.dart';
 import 'package:ipot/l10n/app_localizations.dart';
 import 'package:ipot/models/language/language_model.dart';
 import 'package:ipot/state/stores/locale/locale_notifier.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 const _languages = [
   LanguageModel(

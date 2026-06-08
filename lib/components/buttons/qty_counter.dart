@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ipot/components/buttons/app_icon_button.dart';
 import 'package:ipot/utils/enums.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class QtyCounter extends StatelessWidget {
   final int value;
