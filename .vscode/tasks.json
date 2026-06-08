@@ -4,7 +4,7 @@
     {
       "label": "Flutter Clean Full Reset iOS",
       "type": "shell",
-      "command": "rm -f pubspec.lock && flutter clean && flutter pub get && cd ios && rm -f Podfile.lock && pod install --repo-update && cd ..",
+      "command": "rm -f pubspec.lock && flutter clean && flutter pub get && cd ios && rm -f Podfile.lock && rm -rf Pods && pod install --repo-update && cd ..",
       "group": "build",
       "problemMatcher": []
     },
