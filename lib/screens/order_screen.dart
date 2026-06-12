@@ -10,7 +10,10 @@ import 'package:ipot/state/stores/page_handle/page_handle_notifier.dart';
 import 'package:ipot/utils/enums.dart';
 import 'package:ipot/utils/functions.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
-import 'package:pusher_channels_flutter/pusher_channels_flutter.dart';
+import 'package:pusher_client_socket/pusher_client_socket.dart';
+// Ganti import ini:
+// import 'package:pusher_channels_flutter/pusher_channels_flutter.dart';
+// Dengan:
 
 class OrderScreen extends ConsumerStatefulWidget {
   const OrderScreen({super.key});
@@ -26,22 +29,53 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
   late Animation<double> _fadeAnimation;
   int? _lastStep;
 
-  void _initPusher(int? orderId) async {
-    PusherChannelsFlutter pusher = PusherChannelsFlutter.getInstance();
+  PusherClient? _pusher;
+  Channel? _channel;
+  int? _subscribedOrderId;
+  bool _pusherInitialized = false;
+
+  void _initPusher(int orderId) {
+    if (_pusherInitialized && _subscribedOrderId == orderId) return;
+
+    _disposePusher();
+
     try {
-      await pusher.init(
-        apiKey: 'fd8b37673605980ec900',
-        cluster: 'ap1',
-        onEvent: (event) {
-          if (event.eventName == 'order.status.updated') {
-            ref.invalidate(getOrderStatusProvider);
-          }
-        },
+      _pusher = PusherClient(
+        options: PusherOptions(
+          key: 'fd8b37673605980ec900',
+          cluster: 'ap1',
+          authOptions: PusherAuthOptions(''),
+        ),
       );
-      await pusher.subscribe(channelName: 'orders.$orderId');
-      await pusher.connect();
+
+      _channel = _pusher!.subscribe('orders.$orderId');
+
+      _channel!.bind('order.status.updated', (event) {
+        if (mounted) ref.invalidate(getOrderStatusProvider);
+      });
+
+      _pusher!.connect();
+
+      _subscribedOrderId = orderId;
+      _pusherInitialized = true;
     } catch (e) {
-      Functions.errorPrint('$e');
+      Functions.errorPrint('Pusher init error: $e');
+    }
+  }
+
+  void _disposePusher() {
+    try {
+      if (_channel != null && _subscribedOrderId != null) {
+        _pusher?.unsubscribe('orders.$_subscribedOrderId');
+      }
+      _pusher?.disconnect();
+    } catch (e) {
+      Functions.errorPrint('Pusher dispose error: $e');
+    } finally {
+      _channel = null;
+      _pusher = null;
+      _subscribedOrderId = null;
+      _pusherInitialized = false;
     }
   }
 
@@ -164,6 +198,7 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
   @override
   void dispose() {
     _stepChangeController.dispose();
+    _disposePusher(); // Pastikan pusher di-disconnect saat widget di-dispose
     super.dispose();
   }
 
@@ -189,6 +224,7 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
 
       body = state.when(
         data: (data) {
+          // Init pusher di sini tapi sudah aman karena ada guard di dalam _initPusher
           _initPusher(orderId);
 
           final status = data.status ?? OrderStatus.pending;
@@ -552,7 +588,6 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
                   }),
                 ),
               ),
-
               Card(
                 margin: const EdgeInsets.symmetric(horizontal: 24),
                 child: Padding(
@@ -566,13 +601,9 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
                           ContainerShimmerLoad(width: 110, height: 14),
                         ],
                       ),
-
                       const SizedBox(height: 12),
-
                       Divider(color: Colors.black12),
-
                       const SizedBox(height: 12),
-
                       Column(
                         children: List.generate(3, (index) {
                           return Padding(
@@ -585,9 +616,7 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
                                   height: 56,
                                   radius: 14,
                                 ),
-
                                 const SizedBox(width: 16),
-
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment:
@@ -597,16 +626,12 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
                                         width: 140,
                                         height: 16,
                                       ),
-
                                       SizedBox(height: 12),
-
                                       ContainerShimmerLoad(
                                         width: 220,
                                         height: 12,
                                       ),
-
                                       SizedBox(height: 12),
-
                                       ContainerShimmerLoad(
                                         width: 90,
                                         height: 14,
@@ -614,9 +639,7 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
                                     ],
                                   ),
                                 ),
-
                                 const SizedBox(width: 12),
-
                                 const ContainerShimmerLoad(
                                   width: 30,
                                   height: 16,

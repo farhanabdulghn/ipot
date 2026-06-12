@@ -19,7 +19,7 @@ dependencies:
   phosphoricons_flutter: ^1.0.0
   cached_network_image: ^3.4.1
   collection: ^1.19.1
-  pusher_channels_flutter: ^2.6.0
+  pusher_client_socket: ^0.0.8
   google_fonts: ^8.1.0
 
   flutter_localizations:
