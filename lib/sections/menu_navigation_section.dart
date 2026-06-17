@@ -25,6 +25,9 @@ final _items = [
   ),
 ];
 
+final _provider = pageHandleProvider;
+final _notifier = _provider.notifier;
+
 class MenuNavigationSection extends ConsumerStatefulWidget {
   const MenuNavigationSection({super.key});
 
@@ -39,14 +42,13 @@ class _MenuNavigationSectionState extends ConsumerState<MenuNavigationSection> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final provider = pageHandleProvider;
-    final page = ref.watch(provider.select((s) => s.page));
+    final page = ref.watch(_provider.select((s) => s.page));
     final cartItems = ref.watch(cartProvider.select((s) => s.items));
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final ctx = _key.currentContext;
       if (ctx?.size != null) {
-        ref.read(provider.notifier).setMenuNavigationHeight(ctx!.size!.height);
+        ref.read(_notifier).setMenuNavigationHeight(ctx!.size!.height);
       }
     });
 
@@ -92,7 +94,7 @@ class _MenuNavigationSectionState extends ConsumerState<MenuNavigationSection> {
             return Expanded(
               child: TextButton(
                 key: Key('nav_tab_$index'),
-                onPressed: () => ref.read(provider.notifier).setPage(index),
+                onPressed: () => ref.read(_notifier).setPage(index),
                 style: TextButton.styleFrom(
                   overlayColor: Colors.transparent,
                   shape: RoundedRectangleBorder(),

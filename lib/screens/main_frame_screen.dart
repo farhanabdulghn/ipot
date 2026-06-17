@@ -6,6 +6,9 @@ import 'package:ipot/screens/order_screen.dart';
 import 'package:ipot/sections/menu_navigation_section.dart';
 import 'package:ipot/state/stores/page_handle/page_handle_notifier.dart';
 
+final _provider = pageHandleProvider;
+final _notifier = pageHandleProvider.notifier;
+
 class MainFrameScreen extends ConsumerStatefulWidget {
   final String tableId;
   const MainFrameScreen({super.key, required this.tableId});
@@ -16,7 +19,7 @@ class MainFrameScreen extends ConsumerStatefulWidget {
 }
 
 class _MainFrameScreenState extends ConsumerState<MainFrameScreen> {
-  final _pageController = PageController(initialPage: 0, keepPage: true);
+  final _controller = PageController(initialPage: 0, keepPage: true);
 
   List<Widget> get _pages => [
     MenuScreen(tableId: widget.tableId),
@@ -26,18 +29,18 @@ class _MainFrameScreenState extends ConsumerState<MainFrameScreen> {
 
   @override
   void dispose() {
-    _pageController.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(pageHandleProvider);
+    final state = ref.watch(_provider);
 
-    ref.listen(pageHandleProvider.select((s) => s.page), (_, next) {
-      if (_pageController.hasClients && _pageController.page?.round() != next) {
-        ref.read(pageHandleProvider.notifier).setShortcut(true);
-        _pageController.animateToPage(
+    ref.listen(_provider.select((s) => s.page), (_, next) {
+      if (_controller.hasClients && _controller.page?.round() != next) {
+        ref.read(_notifier).setShortcut(true);
+        _controller.animateToPage(
           next,
           duration: const Duration(milliseconds: 250),
           curve: Curves.easeInOut,
@@ -48,9 +51,7 @@ class _MainFrameScreenState extends ConsumerState<MainFrameScreen> {
     return PopScope(
       canPop: state.page == 0,
       onPopInvokedWithResult: (didPop, _) {
-        if (!didPop && state.page != 0) {
-          ref.read(pageHandleProvider.notifier).setPage(0);
-        }
+        if (!didPop && state.page != 0) ref.read(_notifier).setPage(0);
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -58,18 +59,16 @@ class _MainFrameScreenState extends ConsumerState<MainFrameScreen> {
           children: [
             SizedBox.expand(
               child: PageView.builder(
-                controller: _pageController,
+                controller: _controller,
                 physics: const ClampingScrollPhysics(),
                 itemCount: _pages.length,
                 onPageChanged: (page) {
                   if (!state.shortcut && page != state.page) {
-                    ref.read(pageHandleProvider.notifier).setPage(page);
+                    ref.read(_notifier).setPage(page);
                   } else {
                     Future.delayed(
                       const Duration(milliseconds: 450),
-                      () => ref
-                          .read(pageHandleProvider.notifier)
-                          .setShortcut(false),
+                      () => ref.read(_notifier).setShortcut(false),
                     );
                   }
                 },

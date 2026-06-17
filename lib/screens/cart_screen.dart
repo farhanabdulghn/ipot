@@ -15,6 +15,9 @@ import 'package:ipot/state/stores/page_handle/page_handle_notifier.dart';
 import 'package:ipot/utils/functions.dart';
 import 'package:ipot/utils/styles.dart';
 
+final _provider = cartProvider;
+final _notifier = cartProvider.notifier;
+
 class CartScreen extends ConsumerStatefulWidget {
   const CartScreen({super.key});
 
@@ -24,7 +27,7 @@ class CartScreen extends ConsumerStatefulWidget {
 
 class _CartScreenState extends ConsumerState<CartScreen> {
   void _editNote() async {
-    final customerNote = ref.read(cartProvider.select((s) => s.customerNote));
+    final customerNote = ref.read(_provider.select((s) => s.customerNote));
     final note = await showModalBottomSheet<String?>(
       context: context,
       backgroundColor: Colors.white,
@@ -32,7 +35,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
     );
 
     if (note != null) {
-      ref.read(cartProvider.notifier).setCustomerNote(note);
+      ref.read(_notifier).setCustomerNote(note);
     }
   }
 
@@ -48,14 +51,14 @@ class _CartScreenState extends ConsumerState<CartScreen> {
 
     if (confirm == true) {
       if (mounted) Loading(context).start();
-      final cart = ref.read(cartProvider);
+      final cart = ref.read(_provider);
 
       try {
         final response = await OrderRepository().submitOrder(cart);
 
         if (response != null) {
           ref.read(pageHandleProvider.notifier).setOrderId(response);
-          ref.read(cartProvider.notifier).clearCart();
+          ref.read(_notifier).clearCart();
         }
       } catch (e) {
         Functions.errorPrint('$e');
@@ -69,7 +72,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final state = ref.watch(cartProvider);
+    final state = ref.watch(_provider);
     final items = state.items;
     final menuNavigationHeight = ref.watch(
       pageHandleProvider.select((s) => s.menuNavigationHeight),
@@ -180,7 +183,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                           value: item.qty ?? 1,
                           onChanged: (value) {
                             ref
-                                .read(cartProvider.notifier)
+                                .read(_notifier)
                                 .updateQty(itemId: item.id, qty: value);
                           },
                           onMinReached: () async {
@@ -193,9 +196,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                             );
 
                             if (delete == true) {
-                              ref
-                                  .read(cartProvider.notifier)
-                                  .removeFromCart(item);
+                              ref.read(_notifier).removeFromCart(item);
                             }
                           },
                         ),

@@ -11,9 +11,6 @@ import 'package:ipot/utils/enums.dart';
 import 'package:ipot/utils/functions.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 import 'package:pusher_client_socket/pusher_client_socket.dart';
-// Ganti import ini:
-// import 'package:pusher_channels_flutter/pusher_channels_flutter.dart';
-// Dengan:
 
 class OrderScreen extends ConsumerStatefulWidget {
   const OrderScreen({super.key});
@@ -114,7 +111,7 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
     }
 
     return Step(
-      content: const SizedBox(),
+      content: SizedBox(),
       stepStyle: StepStyle(color: activeColor),
       isActive: !isPending,
       state: isCompleted
@@ -198,17 +195,16 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
   @override
   void dispose() {
     _stepChangeController.dispose();
-    _disposePusher(); // Pastikan pusher di-disconnect saat widget di-dispose
+    _disposePusher();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final orderId = ref.read(pageHandleProvider.select((s) => s.orderId));
-    final menuNavigationHeight = ref.watch(
-      pageHandleProvider.select((s) => s.menuNavigationHeight),
-    );
+    final pageHandle = ref.watch(pageHandleProvider);
+    final orderId = pageHandle.orderId;
+    final menuNavigationHeight = pageHandle.menuNavigationHeight;
 
     Widget body;
 
@@ -224,7 +220,6 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
 
       body = state.when(
         data: (data) {
-          // Init pusher di sini tapi sudah aman karena ada guard di dalam _initPusher
           _initPusher(orderId);
 
           final status = data.status ?? OrderStatus.pending;
@@ -502,9 +497,7 @@ class _OrderScreenState extends ConsumerState<OrderScreen>
           title: l10n.orderFailedTitle,
           subtitle: l10n.orderFailedSubtitle,
           icon: PhosphorIconsRegular.warningCircle,
-          onTap: () {
-            ref.invalidate(getOrderStatusProvider(orderId));
-          },
+          onTap: () => ref.invalidate(provider),
         ),
         loading: () => SingleChildScrollView(
           physics: NeverScrollableScrollPhysics(),
